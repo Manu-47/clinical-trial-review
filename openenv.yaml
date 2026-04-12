@@ -1,0 +1,63 @@
+name: clinical-trial-review
+version: "1.0.0"
+description: >
+  A real-world OpenEnv environment where AI agents review clinical trial
+  protocols and identify safety gaps, regulatory violations, and statistical
+  flaws. Mirrors work done daily by FDA reviewers, IRB committees, and
+  pharmaceutical quality assurance teams.
+author: "OpenEnv Hackathon Submission"
+license: MIT
+tags:
+  - openenv
+  - healthcare
+  - nlp
+  - document-review
+  - safety
+  - regulatory
+
+environment:
+  type: text
+  modalities:
+    - text
+  action_space: structured-json
+  observation_space: structured-text
+  reward_type: continuous
+  episode_length: variable
+
+tasks:
+  - id: task_easy
+    name: "Inclusion/Exclusion Criteria Validation"
+    difficulty: easy
+    description: >
+      Identify missing or contradictory inclusion/exclusion criteria
+      in a Phase I oncology trial protocol.
+    max_steps: 10
+    reward_range: [0.0, 1.0]
+
+  - id: task_medium
+    name: "Adverse Event Reporting Gap Detection"
+    difficulty: medium
+    description: >
+      Detect gaps in adverse event monitoring, reporting timelines,
+      and DSMB notification procedures in a multi-site Phase II trial.
+    max_steps: 15
+    reward_range: [0.0, 1.0]
+
+  - id: task_hard
+    name: "Statistical Analysis Plan Audit"
+    difficulty: hard
+    description: >
+      Audit a Phase III Statistical Analysis Plan for p-hacking,
+      missing multiplicity corrections, flawed interim analysis rules,
+      and underpowered endpoints.
+    max_steps: 20
+    reward_range: [0.0, 1.0]
+
+endpoints:
+  reset: /reset
+  step: /step
+  state: /state
+  health: /health
+  tasks: /tasks
+
+base_url: "http://localhost:7860"

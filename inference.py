@@ -37,8 +37,8 @@ from openai import OpenAI
 # Configuration
 # ──────────────────────────────────────────────────────────────────
 
-API_BASE_URL: str = os.environ.get("API_BASE_URL", "https://api.openai.com/v1")
-MODEL_NAME: str = os.environ.get("MODEL_NAME", "gpt-4o")
+API_BASE_URL: str = os.environ.get("API_BASE_URL", "https://router.huggingface.co/v1")
+MODEL_NAME: str = os.environ.get("MODEL_NAME", "meta-llama/Llama-3.2-3B-Instruct")
 API_KEY: str = (
     os.environ.get("HF_TOKEN")
     or os.environ.get("OPENAI_API_KEY")
